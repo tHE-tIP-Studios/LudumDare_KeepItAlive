@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cb8e4edb5541b4699a45bf61364cba, type: 3}
+  m_Name: Talkie Profile
+  m_EditorClassIdentifier: 
+  _characterImage: {fileID: 1202984965197363600, guid: b8d1643ee38056d4e83c5e7382e4d218,
+    type: 3}
+  _imageBgColor: {r: 0, g: 0, b: 0, a: 1}
+  _name: Nicomi Lantes
+  _iconicWord: bru
+  _mostUsedType: 2
+  _description: "uo\u0183\u0250\u0287u\u01DDd p\u01DD\u0279 p\u0279\u1D09\u01DD\u028D
+    \u0287\u0250\u0265\u0287 p\u01DDsn \u0279\u01DD\u028C\u01DD \u0287ou \u01DD\u028C\u0250\u0265
+    plno\u0265s \u1D09.\nAnd I live alone."
+  _gameOverText: My mother is asking me to help with the dishes, gotta go!
