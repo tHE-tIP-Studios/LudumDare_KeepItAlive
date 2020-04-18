@@ -24,7 +24,6 @@ namespace Talkie
         public string Description => _description;
         public Color ImageBgColor => _imageBgColor;
         public PhraseType MostUsedType => _mostUsedType;
-
         public string GameOverText => _gameOverText;
     }
 
