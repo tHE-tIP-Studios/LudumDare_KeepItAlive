@@ -1,2 +1,2 @@
-# What a lively talk!
+# WALT! - What a lively talk!
 ### a game made for Ludum Dare
