@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _phrases:
   - _id: 030000000200000004000000
-    _phrase: ok
+    _phrase: Ok
     _type: 0
   - _id: 030000000200000004000000
-    _phrase: shure man
+    _phrase: Shure man
     _type: 0
   - _id: 030000000200000004000000
-    _phrase: i guess...
+    _phrase: I guess...
     _type: 0
   - _id: 01000000020000000300000004000000
-    _phrase: not really...
+    _phrase: Not really...
     _type: 0
   - _id: 010000000200000003000000
-    _phrase: that's not funny, you know that right?
+    _phrase: That's not funny, you know that right?
     _type: 2
   - _id: 02000000
     _phrase: Hahaha yeeess that is a thing!
@@ -41,7 +41,7 @@ MonoBehaviour:
     _phrase: Yesterday I saw something like that...
     _type: 3
   - _id: 01000000020000000300000004000000
-    _phrase: no
+    _phrase: No
     _type: 0
   - _id: 01000000020000000300000004000000
     _phrase: Yes.
@@ -73,7 +73,11 @@ MonoBehaviour:
     _phrase: To be honest, only time will tell
     _type: 2
   - _id: 01000000020000000300000004000000
-    _phrase: HAHAHAHAHAHAHAHA
+    _phrase: 'HAHAHAHAHAHAHAHA
+
+      HAHAH
+
+      HAH'
     _type: 3
   - _id: 0100000002000000
     _phrase: That is not funny
@@ -116,11 +120,11 @@ MonoBehaviour:
     _phrase: I've been trying to figure out that myself too
     _type: 1
   - _id: 01000000020000000300000004000000
-    _phrase: 'stop
+    _phrase: 'Stop
 
-      just
+      Just
 
-      don''t'
+      Don''t'
     _type: 0
   - _id: 010000000300000004000000
     _phrase: I always aim high, broke my neck once while doing that
@@ -155,3 +159,13 @@ MonoBehaviour:
       But
       dies only have 6 sides... Oh no'
     _type: 1
+  - _id: 01000000020000000300000004000000
+    _phrase: 'My clset door sometimes whispers that to me.
+
+      Closet*'
+    _type: 1
+  - _id: 01000000020000000300000004000000
+    _phrase: 'I don''t quite understanf.
+
+      Understand*'
+    _type: 2
