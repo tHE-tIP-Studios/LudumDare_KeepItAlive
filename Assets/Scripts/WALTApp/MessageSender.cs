@@ -73,7 +73,7 @@ namespace WALTApp
         private static void MoveAllUp()
         {
             foreach (MessageDisplay m in _sentMessages.ToArray())
-                m.ScrollUp();
+                m?.ScrollUp();
         }
 
         private static MessageDisplay CreateNewMessageDisplay() =>

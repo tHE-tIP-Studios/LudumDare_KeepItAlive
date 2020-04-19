@@ -9,8 +9,11 @@ public class ButtonTapWobble : MonoBehaviour
     [SerializeField] private float _duration = 0.5f;
 
     private Button _button;
+    private Vector3 _initialScale;
+
     private void Awake()
     {
+        _initialScale = transform.localScale;
         _button = GetComponent<Button>();
         if (_button == null)
         {
@@ -27,6 +30,7 @@ public class ButtonTapWobble : MonoBehaviour
 
     private void Wobble()
     {
+        transform.localScale = _initialScale;
         LeanTween.scale(gameObject, transform.localScale * _scaleFactor, _duration).setEasePunch();
     }
 }

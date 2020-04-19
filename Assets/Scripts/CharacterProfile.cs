@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Scripts;
+﻿using Scripts;
 using UnityEngine;
 
 namespace Talkie
