@@ -21,5 +21,7 @@ MonoBehaviour:
   _mostUsedType: 3
   _description: I WILL RULE ALL LIVING BEINGS AND FEED THEM CANDY UNTIL THEY NO LONGER
     WANT CHEESE SO I CAN HAVE IT ALL.
-  _gameOverText: My gosh, look at the time... I should go back to the... uh... shower!
-    Yes, shower.
+  _gameOverText: MY GOSH, LOOK AT THE TIME... I SHOULD GO BACK TO THE... UH. SHOWER!
+    YES, SHOWER.
+  _messagesOverText: "I'LL LET YOU HAVE MY ROTTEN CHEESE WHEN I RULE THE WORLD. \nGOOD
+    HUMAN."
