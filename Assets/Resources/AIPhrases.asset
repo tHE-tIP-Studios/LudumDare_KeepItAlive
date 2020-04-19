@@ -13,6 +13,125 @@ MonoBehaviour:
   m_Name: AIPhrases
   m_EditorClassIdentifier: 
   _phrases:
+  - _id: 030000000200000004000000
+    _phrase: ok
+    _type: 0
+  - _id: 030000000200000004000000
+    _phrase: shure man
+    _type: 0
+  - _id: 030000000200000004000000
+    _phrase: i guess...
+    _type: 0
   - _id: 01000000020000000300000004000000
-    _phrase: Fuck off
+    _phrase: not really...
+    _type: 0
+  - _id: 010000000200000003000000
+    _phrase: that's not funny, you know that right?
+    _type: 2
+  - _id: 02000000
+    _phrase: Hahaha yeeess that is a thing!
+    _type: 3
+  - _id: 030000000200000001000000
+    _phrase: Ah is that true? Where did you read that?
+    _type: 2
+  - _id: 0300000002000000
+    _phrase: Back in the day kids didn't say that kind of stuf...
+    _type: 2
+  - _id: 0300000002000000
+    _phrase: Yesterday I saw something like that...
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: no
+    _type: 0
+  - _id: 01000000020000000300000004000000
+    _phrase: Yes.
+    _type: 2
+  - _id: 01000000020000000300000004000000
+    _phrase: My closet door sometimes whispers that to me.
+    _type: 1
+  - _id: 0300000004000000
+    _phrase: Care to vibe?
+    _type: 2
+  - _id: 0300000002000000
+    _phrase: Of course, she loves her pink bunny slippers.
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: 'I wish I could drink from a lava lamp.
+
+      It looks so wobbly'
+    _type: 1
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
+    _type: 3
+  - _id: 01000000020000000300000004000000
+    _phrase: ok
     _type: 3
