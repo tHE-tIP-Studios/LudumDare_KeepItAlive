@@ -16,6 +16,11 @@ namespace Scripts.Conversation
         /// </summary>
         public int RatingDifference => _finalRating - _lastRating;
         
+        public RottenConversation()
+        {
+            _finalRating = MAX_EVALUATION;
+        }
+
         public int DetermineWinner(PhraseType player, PhraseType ai)
         {
             return ((int) player + (- (int)ai)) % 4;

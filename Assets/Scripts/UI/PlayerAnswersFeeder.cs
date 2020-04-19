@@ -47,7 +47,13 @@ namespace Scripts.UI
 
         private void ReplaceUsed()
         {
-            _lastUsed.AssignNewText(_master.NewPhrase());
+            Phrase phrase = _master.NewPhrase();
+            if (phrase.Answer == null)
+            {
+                _lastUsed.gameObject.SetActive(false);
+                return;
+            }
+            _lastUsed.AssignNewText(phrase);
         }
 
         private void OnChoicePick(AnswerButton buttonPressed)
@@ -57,13 +63,13 @@ namespace Scripts.UI
 
             // Play a funny bloop sound
             AudioManager.PlaySound(_buttonPressSound, 1, Random.Range(0.9f, 1f));
-            MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer);
-
-            // Call for the ai to answer
-            _master.Answer();
             
-            // Replaces the used button
-            ReplaceUsed();
+            if(MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer))
+            {
+                ReplaceUsed();
+                // Call for the ai to answer
+                _master.Answer();
+            }
         }
     }
 }

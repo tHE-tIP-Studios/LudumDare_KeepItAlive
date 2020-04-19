@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System;
 using WALTApp;
+using Talkie;
 
 namespace Scripts.Conversation
 {
@@ -21,17 +23,16 @@ namespace Scripts.Conversation
         private Dictionary<int, List<Phrase>> _dialogueNodes = default;
         private List<Phrase> _availablePhrases;
         private RottenConversation _evaluator;
-        private CharacterProfile _aiProfile;
 
         public Phrase LastChoice {get; set;}
         public Phrase LastAnswer {get; set;}
+        public bool IsAITyping {get; private set;}
         
         public event Action outOfPhrases;
         
         private void Awake()
         {
             _evaluator = new RottenConversation();
-            _evaluator.DebugValues();
             _availablePhrases = new List<Phrase>();
             // Initialize dictionary with ids
             _dialogueNodes = new Dictionary<int, List<Phrase>>(_playersAnswers.Entries);
@@ -61,7 +62,13 @@ namespace Scripts.Conversation
         {
             // Declare a gameOver if this is a thing
             if (_availablePhrases.Count <= 0)
-                outOfPhrases?.Invoke();
+            {
+                // Declare a loss, you couldnt keep it lively enough could you?
+                if (_evaluator.CurrentRating <= 0)
+                    outOfPhrases?.Invoke();
+
+                return new Phrase();
+            }
             
             Phrase newPhrase = _availablePhrases
                 [UnityEngine.Random.Range(0, _availablePhrases.Count)];
@@ -89,7 +96,7 @@ namespace Scripts.Conversation
         {
             if (!_dialogueNodes.ContainsKey(LastChoice.IDs[0])) Debug.LogError("Yo, you forgot to put this ID in");
             Phrase aiPhrase;
-            aiPhrase = _dialogueNodes[LastChoice.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[LastChoice.IDs[0]].Count)];
+            aiPhrase = _dialogueNodes[LastChoice.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[LastChoice.IDs[0]].Count - 1)];
             
             // Update the AI answer
             LastAnswer = aiPhrase;
@@ -106,8 +113,28 @@ namespace Scripts.Conversation
 
         public void Answer()
         {
+            float time = UnityEngine.Random.
+                Range(MessageSender.MESSAGE_DELAY, MessageSender.MESSAGE_DELAY * 4); 
             Phrase ai = GetAnswerForCurrent();
-            MessageSender.SendMessage(TalkieArea.ActiveProfile, ai.Answer);
+            Debug.Log(ai.Answer);
+            Debug.Log(TalkieArea.ActiveProfile);
+            
+            StartCoroutine(AnswerAfterTime(time, ai.Answer));
+        }
+
+        private IEnumerator AnswerAfterTime(float time, string text)
+        {
+            float current = 0;
+            IsAITyping = true;
+
+            while(current < time)
+            {
+                current += Time.deltaTime;
+                yield return null;
+            }
+
+            IsAITyping = false;
+            MessageSender.SendMessage(TalkieArea.ActiveProfile, text);
         }
     }
 }
