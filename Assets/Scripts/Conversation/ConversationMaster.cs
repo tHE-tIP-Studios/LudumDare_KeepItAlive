@@ -18,13 +18,17 @@ namespace Scripts.Conversation
         /// Keeps track of phrases with certain ID and its answer
         /// </summary>
         private Dictionary<int, List<Phrase>> _dialogueNodes = default;
-
         private List<Phrase> _availablePhrases;
-
+        private RottenConversation _evaluator;
+        
+        public Phrase LastChoice {get; set;}
+        public Phrase LastAnswer {get; set;}
         public event Action outOfPhrases;
-
+        
         private void Awake()
         {
+            _evaluator = new RottenConversation();
+            _evaluator.DebugValues();
             _availablePhrases = new List<Phrase>();
             // Initialize dictionary with ids
             _dialogueNodes = new Dictionary<int, List<Phrase>>(_playersAnswers.Entries);
@@ -54,7 +58,7 @@ namespace Scripts.Conversation
                 outOfPhrases?.Invoke();
             
             Phrase newPhrase = _availablePhrases
-                [UnityEngine.Random.Range(0, _availablePhrases.Count - 1)];
+                [UnityEngine.Random.Range(0, _availablePhrases.Count)];
             
             _availablePhrases.Remove(newPhrase);
             return newPhrase;
@@ -73,6 +77,39 @@ namespace Scripts.Conversation
             }
 
             return newPhrases;
+        }
+
+        public Phrase GetAnswerFor(Phrase playerPhrase)
+        {
+            if (!_dialogueNodes.ContainsKey(playerPhrase.IDs[0])) Debug.LogError("Yo, you forgot to put this ID in");
+            Phrase aiPhrase;
+            aiPhrase = _dialogueNodes[playerPhrase.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[playerPhrase.IDs[0]].Count)];
+
+            // Update the AI answer
+            LastAnswer = aiPhrase;
+
+            // Update Score as we now have the answer from the player and the ai
+            UpdateScore();
+            return aiPhrase;
+        }
+
+        public Phrase GetAnswerForCurrent()
+        {
+            if (!_dialogueNodes.ContainsKey(LastChoice.IDs[0])) Debug.LogError("Yo, you forgot to put this ID in");
+            Phrase aiPhrase;
+            aiPhrase = _dialogueNodes[LastChoice.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[LastChoice.IDs[0]].Count)];
+            
+            // Update the AI answer
+            LastAnswer = aiPhrase;
+
+            // Update Score as we now have the answer from the player and the ai
+            UpdateScore();
+            return aiPhrase;
+        }
+
+        private void UpdateScore()
+        {
+            _evaluator.Evaluate(LastChoice.PhraseType, LastAnswer.PhraseType);
         }
     }
 }

@@ -1,7 +1,5 @@
 using UnityEngine;
-using TMPro;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using Scripts.Conversation;
 
 namespace Scripts.UI
@@ -9,9 +7,10 @@ namespace Scripts.UI
     public class PlayerAnswersFeeder : MonoBehaviour
     {
         private const int PLAYER_CHOICES = 4;
-        private List<TextMeshProUGUI> _answerSpaces;
-        private List<Button> _buttons;
-        private Transform _lastUsed;
+        
+        [SerializeField] private AudioClip _buttonPressSound;
+        private List<AnswerButton> _buttons;
+        private AnswerButton _lastUsed;
         
         /// <summary>
         /// Oh yes whip me master
@@ -21,25 +20,17 @@ namespace Scripts.UI
         private void Start()
         {
             _master = FindObjectOfType<ConversationMaster>();
-            _answerSpaces = new List<TextMeshProUGUI>(PLAYER_CHOICES);
-            _buttons = new List<Button>(PLAYER_CHOICES);
+            _buttons = new List<AnswerButton>(PLAYER_CHOICES);
 
-            var buttons = GetComponentsInChildren<Button>();
-            Debug.Log(buttons.Length);
-            var textAssets = GetComponentsInChildren<TextMeshProUGUI>();
-
+            var buttons = GetComponentsInChildren<AnswerButton>();
             for (int i = 0; i < PLAYER_CHOICES; i++)
             {
-                Transform bTrans = buttons[i].transform;
-                
-                buttons[i].onClick.AddListener(() => 
-                    {
-                        OnChoicePick(bTrans);
-                    });
-                
+                AnswerButton bTrans = buttons[i];
+                buttons[i].AssignOnClick<AnswerButton>(OnChoicePick, bTrans);
                 _buttons.Add(buttons[i]);
-                _answerSpaces.Add(textAssets[i]);
             }
+
+            if (_master == null) Debug.LogError("Place a Conversation master in scene please");
 
             InjectNewAnswers(_master.NewPhrase(PLAYER_CHOICES));
         }
@@ -48,19 +39,22 @@ namespace Scripts.UI
         {
             for (int i = 0; i < newPhrases.Length; i++)
             {
-                _answerSpaces[i].text = newPhrases[i].Answer;
+                _buttons[i].AssignNewText(newPhrases[i]);
             }
         }
 
         public void ReplaceUsed()
         {
-            string newAnswer = _master.NewPhrase().Answer;
-            _lastUsed.GetComponentInChildren<TextMeshProUGUI>().text = newAnswer;
+            _master.LastChoice = _lastUsed.CurrentPhrase;
+            _lastUsed.AssignNewText(_master.NewPhrase());
         }
 
-        private void OnChoicePick(Transform buttonPressed)
+        private void OnChoicePick(AnswerButton buttonPressed)
         {
             _lastUsed = buttonPressed;
+
+            // Play a funny bloop sound
+            AudioManager.PlaySound(_buttonPressSound, 1, Random.Range(0.9f, 1f));
             Debug.Log(buttonPressed.name);
         }
     }
