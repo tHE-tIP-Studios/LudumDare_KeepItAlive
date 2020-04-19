@@ -26,6 +26,7 @@ namespace Scripts.Conversation
         private RottenConversation _evaluator;
         private int _activeChoices;
         private WaitForSeconds _secondsToWait;
+        private Coroutine _typingRoutine;
 
         public Phrase LastChoice {get; set;}
         public Phrase LastAnswer {get; set;}
@@ -39,8 +40,9 @@ namespace Scripts.Conversation
                 if (_activeChoices <= 0)
                 {
                     outOfPhrases?.Invoke();
+                    if (_typingRoutine != null) StopCoroutine(_typingRoutine);
                     StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
-                        TalkieArea.ActiveProfile.GameOverText, WALTSceneManager.LoadMainMenu));
+                        TalkieArea.ActiveProfile.MessagesOverText, WALTSceneManager.LoadMainMenu));
                     Debug.Log("You lost by Active Phrases");
                 }
             }
@@ -100,6 +102,7 @@ namespace Scripts.Conversation
                     Debug.Log("You lost by Conversation Rating");
                     gameOver?.Invoke();
 
+                    if (_typingRoutine != null) StopCoroutine(_typingRoutine);
                     StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
                         TalkieArea.ActiveProfile.GameOverText, WALTSceneManager.LoadMainMenu));
                 }
@@ -156,7 +159,7 @@ namespace Scripts.Conversation
             Debug.Log(ai.Answer);
             Debug.Log(_evaluator.CurrentRating);            
 
-            StartCoroutine(AnswerAfterTime(time, ai.Answer));
+            _typingRoutine = StartCoroutine(AnswerAfterTime(time, ai.Answer));
         }
 
         private IEnumerator AnswerAfterTime(float time, string text, Action afterAnswer = null)
@@ -167,7 +170,7 @@ namespace Scripts.Conversation
 
             while(current < time)
             {
-                if (.005f > UnityEngine.Random.Range(0f, 1f) && IsAITyping)
+                if (.001f > UnityEngine.Random.Range(0f, 1f) && IsAITyping)
                 {
                     IsAITyping = false;
                     yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
@@ -184,7 +187,7 @@ namespace Scripts.Conversation
             
             if(afterAnswer != null)
             {
-                yield return _secondsToWait;
+                yield return new WaitForSeconds(3f);
                 afterAnswer?.Invoke();
             }
         }
