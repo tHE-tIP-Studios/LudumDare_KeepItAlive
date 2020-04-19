@@ -43,7 +43,7 @@ namespace Talkie
         private void LoadTalkScene()
         {
             TalkieArea.ActiveProfile = Profile;
-            SceneManager.LoadScene("MessageScene");
+            WALTSceneManager.LoadMessageScene();
         }
     }
 }
