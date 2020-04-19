@@ -25,6 +25,7 @@ namespace Scripts.Conversation
         private List<Phrase> _availablePhrases;
         private RottenConversation _evaluator;
         private int _activeChoices;
+        private WaitForSeconds _secondsToWait;
 
         public Phrase LastChoice {get; set;}
         public Phrase LastAnswer {get; set;}
@@ -48,6 +49,7 @@ namespace Scripts.Conversation
         
         private void Awake()
         {
+            _secondsToWait = new WaitForSeconds(2f);
             ActiveChoices = 4;
             _evaluator = new RottenConversation();
             _evaluator.DebugValues();
@@ -147,22 +149,20 @@ namespace Scripts.Conversation
         private IEnumerator AnswerAfterTime(float time, string text)
         {
             float current = 0;
-            float stopTypingTimer = 0;
-
-            yield return new WaitForSeconds(0.5f);
+            yield return _secondsToWait;
             IsAITyping = true;
 
             while(current < time)
             {
-                if (!IsAITyping && stopTypingTimer >= MAX_STOP_TYPING_TIME)
-                    IsAITyping = true;
-                else if (.2f > UnityEngine.Random.Range(0f, 1f))
+                if (.005f > UnityEngine.Random.Range(0f, 1f) && IsAITyping)
+                {
                     IsAITyping = false;
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
+                    IsAITyping = true;
+                }
 
                 // Update clocks
                 current += Time.deltaTime;
-                if (!IsAITyping)
-                    stopTypingTimer += Time.deltaTime;
                 yield return null;
             }
 
