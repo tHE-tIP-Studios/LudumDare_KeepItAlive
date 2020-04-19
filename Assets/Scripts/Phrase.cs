@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 namespace Scripts
 {
@@ -14,5 +15,10 @@ namespace Scripts
         public int[] IDs => _id;
 
         public int this[int i] => _id[i];
+
+        public override string ToString()
+        {
+            return $"{_phrase} with Type: {_type}";
+        }
     }
 }

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _phrases:
   - _id: 01000000
-    _phrase: 
+    _phrase: AAAAAAAAAAA
     _type: 0
   - _id: 02000000
-    _phrase: 
+    _phrase: BBBBBBBBBBBBB
     _type: 0
   - _id: 03000000
-    _phrase: 
+    _phrase: CCCCCCCCCCCC
     _type: 0
