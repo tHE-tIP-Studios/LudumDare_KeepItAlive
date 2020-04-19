@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 namespace Talkie
 {
@@ -12,9 +13,16 @@ namespace Talkie
         [SerializeField] private TextMeshProUGUI _namePro = null;
         [SerializeField] private TextMeshProUGUI _descriptionPro = null;
 
+        [SerializeField] private Button _talkButton = null;
+
         private CharacterProfile _profile;
 
         public CharacterProfile Profile => _profile;
+
+        private void Awake()
+        {
+            _talkButton.onClick.AddListener(LoadTalkScene);
+        }
 
         public void Init(CharacterProfile profile)
         {
@@ -23,12 +31,19 @@ namespace Talkie
             _background.color = profile.IconicColor;
             _descriptionPro.SetText(profile.Description);
             _namePro.SetText(profile.Name);
+            _profile = profile;
         }
 
         public void MoveSideways(float xValue)
         {
             LeanTween.moveLocalX(gameObject, transform.localPosition.x + xValue, TalkieSelection.MOVE_COOLDOWN - 0.1f)
-            .setEaseOutCirc();
+                .setEaseOutCirc();
+        }
+
+        private void LoadTalkScene()
+        {
+            TalkieArea.ActiveProfile = Profile;
+            SceneManager.LoadScene("MessageScene");
         }
     }
 }

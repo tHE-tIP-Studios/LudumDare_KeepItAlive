@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/AAAAAAAAAAAAAAAAA.unity
-    guid: 242c3537891f0d7439c6958f01568576
+    path: Assets/Scenes/TalkieSelection.unity
+    guid: a05f6bcbdde15de4fa76747dd5d1e67f
   - enabled: 1
-    path: Assets/Scenes/DialogueSetup.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MessageScene.unity
+    guid: cf83d84d3e832984582d76259c74e7c9
   m_configObjects: {}
