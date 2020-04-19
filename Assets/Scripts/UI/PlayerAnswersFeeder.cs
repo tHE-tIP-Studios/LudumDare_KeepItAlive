@@ -8,8 +8,6 @@ namespace Scripts.UI
     public class PlayerAnswersFeeder : MonoBehaviour
     {
         private const int PLAYER_CHOICES = 4;
-        
-        [SerializeField] private AudioClip _buttonPressSound;
         private List<AnswerButton> _buttons;
         private AnswerButton _lastUsed;
         
@@ -61,9 +59,6 @@ namespace Scripts.UI
             _lastUsed = buttonPressed;
             _master.LastChoice = _lastUsed.CurrentPhrase;
 
-            // Play a funny bloop sound
-            AudioManager.PlaySound(_buttonPressSound, 1, Random.Range(0.9f, 1f));
-            
             if(MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer))
             {
                 ReplaceUsed();
