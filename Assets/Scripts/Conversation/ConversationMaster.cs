@@ -215,6 +215,8 @@ namespace Scripts.Conversation
                 yield return new WaitForSeconds(3f);
                 afterAnswer?.Invoke();
             }
+
+            yield return messageMinimum;
             aiTurn?.Invoke(false);
         }
     }

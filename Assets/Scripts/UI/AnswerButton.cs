@@ -35,8 +35,14 @@ namespace Scripts.UI
 
         public void AssignNewText(Phrase text)
         {
+            if (text.Answer.Contains("\n"))
+            {
+                string[] final = text.Answer.Split('\n');
+                _buttonText.text = final[0] + "...";
+            }
+            else
+                _buttonText.text = text.Answer;
             _currentPhrase = text;
-            _buttonText.text = text.Answer;
         }
     }
 }

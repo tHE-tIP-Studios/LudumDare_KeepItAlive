@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using Scripts.Conversation;
 using WALTApp;
 
@@ -81,12 +82,10 @@ namespace Scripts.UI
             _lastUsed = buttonPressed;
             _master.LastChoice = _lastUsed.CurrentPhrase;
 
-            if (MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer))
-            {
-                ReplaceUsed();
-                // Call for the ai to answer
-                _master.Answer();
-            }
+            StartCoroutine(PlayerMessage(_lastUsed.CurrentPhrase.Answer));
+            ReplaceUsed();
+            // Call for the ai to answer
+            _master.Answer();
 
             int active = 0;
             foreach (AnswerButton b in _buttons)
@@ -98,6 +97,23 @@ namespace Scripts.UI
             }
             _master.ActiveChoices = active;
             _master.CheckScore();
+        }
+
+        private IEnumerator PlayerMessage(string text)
+        {
+            WaitForSeconds messageMinimum = new WaitForSeconds(MessageSender.MESSAGE_DELAY);
+            if (text.Contains("\n"))
+            {
+                string[] concatStrings;
+                concatStrings = text.Split('\n');
+                foreach (string s in concatStrings)
+                {
+                    MessageSender.SendMessage(s);
+                    yield return messageMinimum;
+                }
+            }
+            else
+                MessageSender.SendMessage(text);
         }
     }
 }

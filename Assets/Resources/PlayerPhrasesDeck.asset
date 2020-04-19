@@ -17,19 +17,23 @@ MonoBehaviour:
     _phrase: Hey
     _type: 2
   - _id: 02000000
-    _phrase: UwU helloooooooooooo
-    _type: 3
+    _phrase: Ok, don't really know what that means.
+    _type: 0
   - _id: 04000000
     _phrase: Hm...
     _type: 0
   - _id: 01000000
-    _phrase: Sup
+    _phrase: 'RIGHT??
+
+      Hate the buggers.'
     _type: 1
   - _id: 01000000
     _phrase: Yo, wassup small man
     _type: 1
   - _id: 01000000
-    _phrase: There are only 2 genders
+    _phrase: 'There are only 2 genders
+
+      I mean, biologically speaking...'
     _type: 1
   - _id: 02000000
     _phrase: What you're saying is all greek to me man...
@@ -41,14 +45,14 @@ MonoBehaviour:
     _phrase: NO, NO WAY!!!
     _type: 3
   - _id: 02000000
-    _phrase: ok, so have you ever seen squirrels, like, in real life?
+    _phrase: Ok, so have you ever seen squirrels, like, in real life?
     _type: 3
   - _id: 02000000
-    _phrase: Wouldn't it be funny if a virus starts spreading and everyone has to
-      work from home?! HAHA... haha.. ha.
+    _phrase: "Wouldn't it be funny if a virus starts spreading and everyone has to
+      work from home?! \nHAHA... \nhaha.. ha."
     _type: 3
   - _id: 02000000
-    _phrase: have u heard about the tragedy of darth plagueis the wise?
+    _phrase: Have u heard about the tragedy of darth plagueis the wise?
     _type: 3
   - _id: 02000000
     _phrase: My life is a crazy explosion of shapes and colors
@@ -73,30 +77,37 @@ MonoBehaviour:
       cheese or not?
     _type: 1
   - _id: 03000000
-    _phrase: So you ever been out of the counry?
+    _phrase: 'So you ever been out of the counry?
+
+      *Country, sorry.'
     _type: 2
   - _id: 03000000
-    _phrase: Free will and determinism are like a game of cards. The hand that is
-      dealt you is determinism. The way you play your hand is free will.
+    _phrase: "Free will and determinism are like a game of cards. \nThe hand that
+      is dealt you is determinism. The way you play your hand is free will."
     _type: 2
   - _id: 03000000
-    _phrase: Do the hard jobs first. The easy jobs will take care of themselves.
+    _phrase: "Do the hard jobs first. \nThe easy jobs will take care of themselves."
     _type: 2
   - _id: 03000000
     _phrase: Yeah, you seen the last episode of Rock & Mirty yesterday?
     _type: 2
   - _id: 03000000
-    _phrase: How's the student life going? you're a student right?
+    _phrase: 'How''s the sudent life going?
+
+      *Student
+
+      You''re a student
+      right?'
     _type: 2
   - _id: 04000000
-    _phrase: you're rather late
+    _phrase: You're rather late
     _type: 0
   - _id: 04000000
-    _phrase: ok.
+    _phrase: Ok.
     _type: 0
   - _id: 04000000
-    _phrase: shure
+    _phrase: Shure
     _type: 0
   - _id: 04000000
-    _phrase: maybe.
+    _phrase: Maybe.
     _type: 0
