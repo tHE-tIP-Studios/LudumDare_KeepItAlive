@@ -1511,6 +1511,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playersAnswers: {fileID: 11400000, guid: ea6964b9a32f7eb469039113ca99e931, type: 2}
   _aiDialogue: {fileID: 11400000, guid: f1510cd4e3e7cd64ab32ad48089ae592, type: 2}
+  _debugString: 'Hi
+
+    Second line
+
+    Third'
 --- !u!1 &1989287897
 GameObject:
   m_ObjectHideFlags: 0

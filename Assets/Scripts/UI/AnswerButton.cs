@@ -18,6 +18,11 @@ namespace Scripts.UI
             _buttonText = GetComponentInChildren<TextMeshProUGUI>();
         }
 
+        public void SetActive(bool value)
+        {
+            _button.interactable = value;
+        }
+
         public void AssignOnClick<T>(Action<T> functionToAssign, T something)
         {
             _button.onClick.AddListener(() => functionToAssign?.Invoke(something));
