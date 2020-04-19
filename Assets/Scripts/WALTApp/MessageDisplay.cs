@@ -7,7 +7,7 @@ namespace WALTApp
 {
     public class MessageDisplay : MonoBehaviour
     {
-        private const byte MAX_SCROLL_UP = 5;
+        private const byte MAX_SCROLL_UP = 10;
         private const float SCROLL_AMOUNT = 320;
         private const float CENTER_OFFSET = 195;
         private const float INITIAL_HEIGHT = -220;
