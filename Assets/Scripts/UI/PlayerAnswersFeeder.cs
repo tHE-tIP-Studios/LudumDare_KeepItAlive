@@ -10,7 +10,7 @@ namespace Scripts.UI
         private const int PLAYER_CHOICES = 4;
         private List<AnswerButton> _buttons;
         private AnswerButton _lastUsed;
-        
+
         /// <summary>
         /// Oh yes whip me master
         /// </summary>
@@ -29,7 +29,7 @@ namespace Scripts.UI
                 _buttons.Add(buttons[i]);
             }
 
-            if (_master == null) 
+            if (_master == null)
                 Debug.LogError("Place a Conversation master in scene please");
             else
                 InjectNewAnswers(_master.NewPhrase(PLAYER_CHOICES));
@@ -59,7 +59,7 @@ namespace Scripts.UI
             _lastUsed = buttonPressed;
             _master.LastChoice = _lastUsed.CurrentPhrase;
 
-            if(MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer))
+            if (MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer))
             {
                 ReplaceUsed();
                 // Call for the ai to answer
@@ -67,7 +67,7 @@ namespace Scripts.UI
             }
 
             int active = 0;
-            foreach(AnswerButton b in _buttons)
+            foreach (AnswerButton b in _buttons)
             {
                 if (b.gameObject.activeInHierarchy)
                 {
@@ -75,6 +75,7 @@ namespace Scripts.UI
                 }
             }
             _master.ActiveChoices = active;
+            _master.CheckScore();
         }
     }
 }

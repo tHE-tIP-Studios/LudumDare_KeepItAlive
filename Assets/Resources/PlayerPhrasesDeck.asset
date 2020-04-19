@@ -13,15 +13,90 @@ MonoBehaviour:
   m_Name: PlayerPhrasesDeck
   m_EditorClassIdentifier: 
   _phrases:
-  - _id: 01000000
+  - _id: 03000000
     _phrase: Hey
     _type: 2
   - _id: 02000000
     _phrase: UwU helloooooooooooo
     _type: 3
-  - _id: 03000000
+  - _id: 04000000
     _phrase: Hm...
     _type: 0
-  - _id: 04000000
+  - _id: 01000000
     _phrase: Sup
     _type: 1
+  - _id: 01000000
+    _phrase: Yo, wassup small man
+    _type: 1
+  - _id: 01000000
+    _phrase: There are only 2 genders
+    _type: 1
+  - _id: 02000000
+    _phrase: What you're saying is all greek to me man...
+    _type: 1
+  - _id: 02000000
+    _phrase: YES!
+    _type: 3
+  - _id: 02000000
+    _phrase: NO, NO WAY!!!
+    _type: 3
+  - _id: 02000000
+    _phrase: ok, so have you ever seen squirrels, like, in real life?
+    _type: 3
+  - _id: 02000000
+    _phrase: Wouldn't it be funny if a virus starts spreading and everyone has to
+      work from home?! HAHA... haha.. ha.
+    _type: 3
+  - _id: 02000000
+    _phrase: have u heard about the tragedy of darth plagueis the wise?
+    _type: 3
+  - _id: 02000000
+    _phrase: My life is a crazy explosion of shapes and colors
+    _type: 3
+  - _id: 01000000
+    _phrase: Want to be my lovey Dovey cheesy pie?
+    _type: 1
+  - _id: 03000000
+    _phrase: Give a man a fish
+    _type: 2
+  - _id: 01000000
+    _phrase: Im a greased lightning you know
+    _type: 1
+  - _id: 01000000
+    _phrase: When the rubber hits the road, it's quite squeaky
+    _type: 0
+  - _id: 03000000
+    _phrase: Work is driving me nuts lately...
+    _type: 2
+  - _id: 01000000
+    _phrase: I'm going to stop beating around the bush here... do you have a favourite
+      cheese or not?
+    _type: 1
+  - _id: 03000000
+    _phrase: So you ever been out of the counry?
+    _type: 2
+  - _id: 03000000
+    _phrase: Free will and determinism are like a game of cards. The hand that is
+      dealt you is determinism. The way you play your hand is free will.
+    _type: 2
+  - _id: 03000000
+    _phrase: Do the hard jobs first. The easy jobs will take care of themselves.
+    _type: 2
+  - _id: 03000000
+    _phrase: Yeah, you seen the last episode of Rock & Mirty yesterday?
+    _type: 2
+  - _id: 03000000
+    _phrase: How's the student life going? you're a student right?
+    _type: 2
+  - _id: 04000000
+    _phrase: you're rather late
+    _type: 0
+  - _id: 04000000
+    _phrase: ok.
+    _type: 0
+  - _id: 04000000
+    _phrase: shure
+    _type: 0
+  - _id: 04000000
+    _phrase: maybe.
+    _type: 0

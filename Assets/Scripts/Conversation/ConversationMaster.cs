@@ -28,10 +28,10 @@ namespace Scripts.Conversation
         private WaitForSeconds _secondsToWait;
         private Coroutine _typingRoutine;
 
-        public Phrase LastChoice {get; set;}
-        public Phrase LastAnswer {get; set;}
-        public bool IsAITyping {get; private set;}
-        public int ActiveChoices 
+        public Phrase LastChoice { get; set; }
+        public Phrase LastAnswer { get; set; }
+        public bool IsAITyping { get; private set; }
+        public int ActiveChoices
         {
             get => _activeChoices;
             set
@@ -47,15 +47,15 @@ namespace Scripts.Conversation
                 }
             }
         }
-        
+
         public event Action outOfPhrases;
         public event Action gameOver;
-        
-        private void OnEnable() 
+
+        private void OnEnable()
         {
         }
 
-        private void OnDisable() 
+        private void OnDisable()
         {
         }
 
@@ -72,13 +72,16 @@ namespace Scripts.Conversation
             for (int i = 0; i < _playersAnswers.Entries; i++)
             {
                 if (_dialogueNodes.ContainsKey(_playersAnswers[i][0]))
+                {
                     Debug.LogWarning("Check youw pwayew deck keys pwease!");
+                }
+                else
+                    _dialogueNodes.Add(_playersAnswers[i][0], new List<Phrase>());
 
-                _dialogueNodes.Add(_playersAnswers[i][0], new List<Phrase>());
                 _availablePhrases.Add(_playersAnswers[i]);
                 for (int j = 0; j < _aiDialogue.Entries; j++)
                 {
-                    for(int k = 0; k < _aiDialogue[j].IDs.Length; k++)
+                    for (int k = 0; k < _aiDialogue[j].IDs.Length; k++)
                     {
                         // Check IDS and insert them into the dictionary
                         if (_dialogueNodes.ContainsKey(_aiDialogue[j][k]))
@@ -90,29 +93,30 @@ namespace Scripts.Conversation
             }
         }
 
+        public void CheckScore()
+        {
+            if (_evaluator.CurrentRating <= 0)
+            {
+                Debug.Log("You lost by Conversation Rating");
+                gameOver?.Invoke();
+
+                if (_typingRoutine != null) StopCoroutine(_typingRoutine);
+                StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
+                    TalkieArea.ActiveProfile.GameOverText, WALTSceneManager.LoadMainMenu));
+            }
+        }
+
         public Phrase NewPhrase()
         {
             // Declare a gameOver if this is a thing
             if (_availablePhrases.Count <= 0)
             {
-                
-                // Declare a loss, you couldnt keep it lively enough could you?
-                if (_evaluator.CurrentRating <= 0)
-                {
-                    Debug.Log("You lost by Conversation Rating");
-                    gameOver?.Invoke();
-
-                    if (_typingRoutine != null) StopCoroutine(_typingRoutine);
-                    StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
-                        TalkieArea.ActiveProfile.GameOverText, WALTSceneManager.LoadMainMenu));
-                }
-
                 return new Phrase();
             }
-            
+
             Phrase newPhrase = _availablePhrases
                 [UnityEngine.Random.Range(0, _availablePhrases.Count)];
-            
+
             _availablePhrases.Remove(newPhrase);
             return newPhrase;
         }
@@ -121,9 +125,9 @@ namespace Scripts.Conversation
         {
             if (_availablePhrases.Count < numberOfPhrases)
                 numberOfPhrases = _availablePhrases.Count;
-            
+
             Phrase[] newPhrases = new Phrase[numberOfPhrases];
-            
+
             for (int i = 0; i < numberOfPhrases; i++)
             {
                 newPhrases[i] = NewPhrase();
@@ -134,10 +138,12 @@ namespace Scripts.Conversation
 
         public Phrase GetAnswerForCurrent()
         {
-            if (!_dialogueNodes.ContainsKey(LastChoice.IDs[0])) Debug.LogError("Yo, you forgot to put this ID in");
+            if (!_dialogueNodes.ContainsKey(LastChoice.IDs[0]))
+                Debug.LogError("Yo, you forgot to put this ID in");
+
             Phrase aiPhrase;
-            aiPhrase = _dialogueNodes[LastChoice.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[LastChoice.IDs[0]].Count - 1)];
-            
+            aiPhrase = _dialogueNodes[LastChoice.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[LastChoice.IDs[0]].Count)];
+
             // Update the AI answer
             LastAnswer = aiPhrase;
 
@@ -154,10 +160,10 @@ namespace Scripts.Conversation
         public void Answer()
         {
             float time = UnityEngine.Random.
-                Range(MessageSender.MESSAGE_DELAY, MessageSender.MESSAGE_DELAY * 4); 
+                Range(MessageSender.MESSAGE_DELAY, MessageSender.MESSAGE_DELAY * 4);
             Phrase ai = GetAnswerForCurrent();
             Debug.Log(ai.Answer);
-            Debug.Log(_evaluator.CurrentRating);            
+            Debug.Log(_evaluator.CurrentRating);
 
             _typingRoutine = StartCoroutine(AnswerAfterTime(time, ai.Answer));
         }
@@ -168,7 +174,7 @@ namespace Scripts.Conversation
             yield return _secondsToWait;
             IsAITyping = true;
 
-            while(current < time)
+            while (current < time)
             {
                 if (.001f > UnityEngine.Random.Range(0f, 1f) && IsAITyping)
                 {
@@ -183,9 +189,11 @@ namespace Scripts.Conversation
             }
 
             IsAITyping = false;
+            if (TalkieArea.ActiveProfile.Name == "Vladimir")
+                text = text.ToUpper();
             MessageSender.SendMessage(TalkieArea.ActiveProfile, text);
-            
-            if(afterAnswer != null)
+
+            if (afterAnswer != null)
             {
                 yield return new WaitForSeconds(3f);
                 afterAnswer?.Invoke();
