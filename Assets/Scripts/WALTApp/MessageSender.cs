@@ -30,7 +30,10 @@ namespace WALTApp
             if (!CanSendMessage) return false;
             AudioManager.PlaySound(_aiSound);
             _timeOfLastMessage = Time.time;
+                        
+
             DisplayMessage(talkieProfile.IconicColor, text, false);
+
             return true;
         }
 
@@ -40,6 +43,7 @@ namespace WALTApp
             if (!CanSendMessage) return false;
             AudioManager.PlaySound(_playerSound);
             DisplayMessage(Color.white, text, true);
+
             return true;
         }
 

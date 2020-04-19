@@ -16,9 +16,23 @@ namespace Scripts.UI
         /// </summary>
         private ConversationMaster _master;
 
-        private void Start()
+        private void Awake() 
         {
             _master = FindObjectOfType<ConversationMaster>();
+        }
+
+        private void OnEnable() 
+        {
+            _master.aiTurn += ActivateButtons;
+        }
+
+        private void OnDisable() 
+        {
+            _master.aiTurn -= ActivateButtons;
+        }
+
+        private void Start()
+        {
             _buttons = new List<AnswerButton>(PLAYER_CHOICES);
 
             var buttons = GetComponentsInChildren<AnswerButton>();
@@ -33,6 +47,14 @@ namespace Scripts.UI
                 Debug.LogError("Place a Conversation master in scene please");
             else
                 InjectNewAnswers(_master.NewPhrase(PLAYER_CHOICES));
+        }
+
+        private void ActivateButtons(bool active)
+        {
+            foreach(AnswerButton b in _buttons)
+            {
+                b.SetActive(!active);
+            }
         }
 
         public void InjectNewAnswers(Phrase[] newPhrases)

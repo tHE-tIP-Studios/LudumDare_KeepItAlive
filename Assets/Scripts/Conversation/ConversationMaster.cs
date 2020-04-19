@@ -18,6 +18,8 @@ namespace Scripts.Conversation
         /// What the AI will say accordingly
         /// </summary>
         [SerializeField] private PlayerPhraseDeck _aiDialogue = default;
+        [TextArea]
+        [SerializeField] private string _debugString = default;
         /// <summary>
         /// Keeps track of phrases with certain ID and its answer
         /// </summary>
@@ -31,6 +33,7 @@ namespace Scripts.Conversation
         public Phrase LastChoice { get; set; }
         public Phrase LastAnswer { get; set; }
         public bool IsAITyping { get; private set; }
+        public Action<bool> aiTurn;
         public int ActiveChoices
         {
             get => _activeChoices;
@@ -61,10 +64,10 @@ namespace Scripts.Conversation
 
         private void Awake()
         {
+            Debug.Log(_debugString);
             _secondsToWait = new WaitForSeconds(2f);
             ActiveChoices = 4;
             _evaluator = new RottenConversation();
-            _evaluator.DebugValues();
             _availablePhrases = new List<Phrase>();
             // Initialize dictionary with ids
             _dialogueNodes = new Dictionary<int, List<Phrase>>(_playersAnswers.Entries);
@@ -170,7 +173,9 @@ namespace Scripts.Conversation
 
         private IEnumerator AnswerAfterTime(float time, string text, Action afterAnswer = null)
         {
+            aiTurn?.Invoke(true);
             float current = 0;
+            WaitForSeconds messageMinimum = new WaitForSeconds(MessageSender.MESSAGE_DELAY);
             yield return _secondsToWait;
             IsAITyping = true;
 
@@ -191,13 +196,26 @@ namespace Scripts.Conversation
             IsAITyping = false;
             if (TalkieArea.ActiveProfile.Name == "Vladimir")
                 text = text.ToUpper();
-            MessageSender.SendMessage(TalkieArea.ActiveProfile, text);
+
+            if (text.Contains("\n"))
+            {
+                string[] concatStrings;
+                concatStrings = text.Split('\n');
+                foreach (string s in concatStrings)
+                {
+                    MessageSender.SendMessage(TalkieArea.ActiveProfile, s);
+                    yield return messageMinimum;
+                }
+            }
+            else
+                MessageSender.SendMessage(TalkieArea.ActiveProfile, text);
 
             if (afterAnswer != null)
             {
                 yield return new WaitForSeconds(3f);
                 afterAnswer?.Invoke();
             }
+            aiTurn?.Invoke(false);
         }
     }
 }
