@@ -17,7 +17,7 @@ namespace WALTApp
         {
             DrawDefaultInspector();
             
-            if(!Application.isPlaying) return;
+            if(!Application.isPlaying || _debugger == null) return;
 
             EditorGUILayout.LabelField("", GUILayout.Height(3));
 

@@ -8,7 +8,7 @@ namespace WALTApp
         [SerializeField] private CharacterProfile _talkieProfile = null;
         [SerializeField] private bool _isPlayer = false;
         [TextArea]
-        [SerializeField] private string _msgToSend = default;
+        [SerializeField] private string _msgToSend = "Hi.";
 
         public bool Send()
         {
