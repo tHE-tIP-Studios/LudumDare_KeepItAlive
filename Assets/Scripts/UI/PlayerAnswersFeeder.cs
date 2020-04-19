@@ -57,7 +57,7 @@ namespace Scripts.UI
 
             // Play a funny bloop sound
             AudioManager.PlaySound(_buttonPressSound, 1, Random.Range(0.9f, 1f));
-            //MessageSender.SendMessage(_lastUsed);
+            MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer);
             Debug.Log(buttonPressed.name);
         }
     }
