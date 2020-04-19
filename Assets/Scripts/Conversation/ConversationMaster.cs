@@ -39,6 +39,8 @@ namespace Scripts.Conversation
                 if (_activeChoices <= 0)
                 {
                     outOfPhrases?.Invoke();
+                    StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
+                        TalkieArea.ActiveProfile.GameOverText));
                     Debug.Log("You lost by Active Phrases");
                 }
             }
@@ -47,6 +49,14 @@ namespace Scripts.Conversation
         public event Action outOfPhrases;
         public event Action gameOver;
         
+        private void OnEnable() 
+        {
+        }
+
+        private void OnDisable() 
+        {
+        }
+
         private void Awake()
         {
             _secondsToWait = new WaitForSeconds(2f);
@@ -89,6 +99,9 @@ namespace Scripts.Conversation
                 {
                     Debug.Log("You lost by Conversation Rating");
                     gameOver?.Invoke();
+
+                    StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
+                        TalkieArea.ActiveProfile.GameOverText));
                 }
 
                 return new Phrase();

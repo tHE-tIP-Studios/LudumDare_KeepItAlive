@@ -7,6 +7,7 @@ namespace Scripts
     public struct Phrase
     {
         [SerializeField] private int[] _id;
+        [TextArea]
         [SerializeField] private string _phrase;
         [SerializeField] private PhraseType _type;
 

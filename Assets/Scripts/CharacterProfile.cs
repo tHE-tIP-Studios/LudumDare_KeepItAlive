@@ -16,6 +16,8 @@ namespace Talkie
         [SerializeField] private string _description = null;
         [TextArea]
         [SerializeField] private string _gameOverText = null;
+        [TextArea]
+        [SerializeField] private string _messagesOverText = null;
 
         public Sprite CharacterImage => _characterImage;
         public string Name => _name;
@@ -24,6 +26,7 @@ namespace Talkie
         public Color IconicColor => _iconicColor;
         public PhraseType MostUsedType => _mostUsedType;
         public string GameOverText => _gameOverText;
+        public string MessagesOverText => _messagesOverText;
 
         public Sprite Background => _background;
     }
