@@ -122,6 +122,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Logo Screen FadeIn
       objectReference: {fileID: 0}
+    - target: {fileID: 7907479090443083428, guid: e23c5aa41c5ec89428935e8ba1e27248,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: cfd9510f357eb2e4bbde4746fb935f91, type: 2}
     - target: {fileID: 7907479090443083429, guid: e23c5aa41c5ec89428935e8ba1e27248,
         type: 3}
       propertyPath: m_LocalScale.x

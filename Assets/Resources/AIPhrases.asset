@@ -58,80 +58,100 @@ MonoBehaviour:
   - _id: 01000000020000000300000004000000
     _phrase: 'I wish I could drink from a lava lamp.
 
-      It looks so wobbly'
+      It just looks so wobbly!'
+    _type: 1
+  - _id: 010000000200000003000000
+    _phrase: 'From where I come from, no one is safe from the boogeyman
+
+      He
+      just keeps escaping from the attic...'
+    _type: 2
+  - _id: 01000000020000000300000004000000
+    _phrase: Well, today I learned that
+    _type: 0
+  - _id: 0200000003000000
+    _phrase: To be honest, only time will tell
+    _type: 2
+  - _id: 01000000020000000300000004000000
+    _phrase: HAHAHAHAHAHAHAHA
+    _type: 3
+  - _id: 0100000002000000
+    _phrase: That is not funny
+    _type: 0
+  - _id: 010000000200000003000000
+    _phrase: My mom used to say that when I was younger!
+    _type: 2
+  - _id: 0300000004000000
+    _phrase: 'Ever stopped and wondered how escalators work?
+
+      They just keep
+      moving and no one is pushing
+
+      Aliens I say.'
     _type: 1
   - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
+    _phrase: I blame aliens
+    _type: 1
+  - _id: 0100000002000000
+    _phrase: I don't quite understand.
+    _type: 2
+  - _id: 0100000002000000
+    _phrase: 'I don''t
+
+      CARE!'
+    _type: 0
   - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
+    _phrase: 'Born too early to explore the world and too soon to explore the universe
+
+      But
+      just in time to experience the wonders of automatic printers'
+    _type: 1
+  - _id: 010000000200000003000000
+    _phrase: Mine is better than yours, don't even try
+    _type: 0
   - _id: 01000000020000000300000004000000
-    _phrase: ok
+    _phrase: NEVER!
     _type: 3
+  - _id: 010000000200000003000000
+    _phrase: I've been trying to figure out that myself too
+    _type: 1
   - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
+    _phrase: 'stop
+
+      just
+
+      don''t'
+    _type: 0
+  - _id: 010000000300000004000000
+    _phrase: I always aim high, broke my neck once while doing that
+    _type: 1
+  - _id: 010000000200000003000000
+    _phrase: It is never too soon
+    _type: 2
+  - _id: 04000000
+    _phrase: If you don't want to talk, sure, thats fine.
+    _type: 2
+  - _id: 02000000
+    _phrase: You seem very happy!
+    _type: 2
+  - _id: 01000000
+    _phrase: Have you considered mental help?
+    _type: 2
   - _id: 01000000020000000300000004000000
-    _phrase: ok
+    _phrase: My therapist had to find another therapist because of me!
     _type: 3
+  - _id: 0200000003000000
+    _phrase: I will avenge you
+    _type: 2
   - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
+    _phrase: I sometimes wonder that too
+    _type: 2
   - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
+    _phrase: What brings you here?
+    _type: 2
   - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
-  - _id: 01000000020000000300000004000000
-    _phrase: ok
-    _type: 3
+    _phrase: 'The opposite sides of a die will always add up to seven
+
+      But
+      dies only have 6 sides... Oh no'
+    _type: 1
