@@ -30,9 +30,10 @@ namespace Scripts.UI
                 _buttons.Add(buttons[i]);
             }
 
-            if (_master == null) Debug.LogError("Place a Conversation master in scene please");
-
-            InjectNewAnswers(_master.NewPhrase(PLAYER_CHOICES));
+            if (_master == null) 
+                Debug.LogError("Place a Conversation master in scene please");
+            else
+                InjectNewAnswers(_master.NewPhrase(PLAYER_CHOICES));
         }
 
         public void InjectNewAnswers(Phrase[] newPhrases)
