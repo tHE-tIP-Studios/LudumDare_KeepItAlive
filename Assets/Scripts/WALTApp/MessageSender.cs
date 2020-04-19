@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Talkie;
 using UnityEngine;
+using Scripts;
 
 namespace WALTApp
 {
@@ -13,6 +14,8 @@ namespace WALTApp
         private static Transform _mainCanvas;
 
         private static float _timeOfLastMessage;
+        private static AudioClip _playerSound = Resources.Load<AudioClip>("Audio/PlayerMessageSound");
+        private static AudioClip _aiSound = Resources.Load<AudioClip>("Audio/AIMessageSound");
 
         public static bool CanSendMessage => Time.time - _timeOfLastMessage >= MESSAGE_DELAY;
 
@@ -28,6 +31,7 @@ namespace WALTApp
         public static bool SendMessage(CharacterProfile talkieProfile, string text)
         {
             if (!CanSendMessage) return false;
+            AudioManager.PlaySound(_aiSound);
             _timeOfLastMessage = Time.time;
             DisplayMessage(talkieProfile.IconicColor, text, false);
             return true;
@@ -37,6 +41,7 @@ namespace WALTApp
         public static bool SendMessage(string text)
         {
             if (!CanSendMessage) return false;
+            AudioManager.PlaySound(_playerSound);
             DisplayMessage(Color.white, text, true);
             return true;
         }
