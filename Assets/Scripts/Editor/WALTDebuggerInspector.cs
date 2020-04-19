@@ -8,19 +8,12 @@ namespace WALTApp
     {
         private WALTDebugger _debugger;
 
-        private void OnSceneGUI()
-        {
-            _debugger = target as WALTDebugger;
-        }
-
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector();
+            _debugger = (WALTDebugger)target;
             
-            if(!Application.isPlaying || _debugger == null) return;
-
+            DrawDefaultInspector();
             EditorGUILayout.LabelField("", GUILayout.Height(3));
-
             if (GUILayout.Button("Send Message", GUILayout.Height(50)))
                 if (!_debugger.Send()) Debug.LogWarning("Message not sent.");
         }
