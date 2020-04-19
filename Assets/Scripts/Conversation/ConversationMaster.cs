@@ -40,7 +40,7 @@ namespace Scripts.Conversation
                 {
                     outOfPhrases?.Invoke();
                     StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
-                        TalkieArea.ActiveProfile.GameOverText));
+                        TalkieArea.ActiveProfile.GameOverText, WALTSceneManager.LoadMainMenu));
                     Debug.Log("You lost by Active Phrases");
                 }
             }
@@ -70,7 +70,7 @@ namespace Scripts.Conversation
             for (int i = 0; i < _playersAnswers.Entries; i++)
             {
                 if (_dialogueNodes.ContainsKey(_playersAnswers[i][0]))
-                    Debug.LogError("Check youw pwayew deck keys pwease!");
+                    Debug.LogWarning("Check youw pwayew deck keys pwease!");
 
                 _dialogueNodes.Add(_playersAnswers[i][0], new List<Phrase>());
                 _availablePhrases.Add(_playersAnswers[i]);
@@ -101,7 +101,7 @@ namespace Scripts.Conversation
                     gameOver?.Invoke();
 
                     StartCoroutine(AnswerAfterTime(MessageSender.MESSAGE_DELAY,
-                        TalkieArea.ActiveProfile.GameOverText));
+                        TalkieArea.ActiveProfile.GameOverText, WALTSceneManager.LoadMainMenu));
                 }
 
                 return new Phrase();
@@ -159,7 +159,7 @@ namespace Scripts.Conversation
             StartCoroutine(AnswerAfterTime(time, ai.Answer));
         }
 
-        private IEnumerator AnswerAfterTime(float time, string text)
+        private IEnumerator AnswerAfterTime(float time, string text, Action afterAnswer = null)
         {
             float current = 0;
             yield return _secondsToWait;
@@ -181,6 +181,12 @@ namespace Scripts.Conversation
 
             IsAITyping = false;
             MessageSender.SendMessage(TalkieArea.ActiveProfile, text);
+            
+            if(afterAnswer != null)
+            {
+                yield return _secondsToWait;
+                afterAnswer?.Invoke();
+            }
         }
     }
 }
