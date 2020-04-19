@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1209,6 +1209,7 @@ GameObject:
   - component: {fileID: 1885858546}
   - component: {fileID: 1885858545}
   - component: {fileID: 1885858544}
+  - component: {fileID: 1885858548}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1272,7 +1273,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1299,6 +1300,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1885858548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885858543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266e7bb7e20fd0642993a1bd6c6ad5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playersAnswers: {fileID: 11400000, guid: ea6964b9a32f7eb469039113ca99e931, type: 2}
+  _aiDialogue: {fileID: 11400000, guid: f1510cd4e3e7cd64ab32ad48089ae592, type: 2}
 --- !u!1 &1989287897
 GameObject:
   m_ObjectHideFlags: 0

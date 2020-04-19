@@ -35,6 +35,9 @@ namespace Scripts.Conversation
             // Add ids to the dictionary
             for (int i = 0; i < _playersAnswers.Entries; i++)
             {
+                if (_dialogueNodes.ContainsKey(_playersAnswers[i][0]))
+                    Debug.LogError("Check youw pwayew deck keys pwease!");
+
                 _dialogueNodes.Add(_playersAnswers[i][0], new List<Phrase>());
                 _availablePhrases.Add(_playersAnswers[i]);
                 for (int j = 0; j < _aiDialogue.Entries; j++)

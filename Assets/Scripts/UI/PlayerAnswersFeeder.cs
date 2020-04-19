@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Scripts.Conversation;
+using WALTApp;
 
 namespace Scripts.UI
 {
@@ -56,6 +57,7 @@ namespace Scripts.UI
 
             // Play a funny bloop sound
             AudioManager.PlaySound(_buttonPressSound, 1, Random.Range(0.9f, 1f));
+            //MessageSender.SendMessage(_lastUsed);
             Debug.Log(buttonPressed.name);
         }
     }
