@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Scripts;
 
 namespace UI
 {
@@ -12,8 +13,11 @@ namespace UI
         [SerializeField] private Image _logoImage = null;
         [SerializeField] private Fader _fader = null;
 
+        private AudioClip _logoSound;
+
         private void Awake()
         {
+            _logoSound = Resources.Load<AudioClip>("Audio/WALT");
             Vector3 rlySmolScale = new Vector3(0.01f, 0.01f, 0.01f);
             _logoImage.transform.localScale = rlySmolScale;
         }
@@ -27,12 +31,17 @@ namespace UI
         {
             if (_fadeIn) StartFade();
             LeanTween.scale(_logoImage.gameObject, Vector3.one, 1.0f).setEaseOutBack();
-            LeanTween.rotateZ(_logoImage.gameObject, -45, 0.5f).setEasePunch().setDelay(1.3f);
+            LeanTween.rotateZ(_logoImage.gameObject, -45, 0.5f).setEasePunch().setDelay(1.3f).setOnStart(LogoSound);
             if (!_fadeIn)
                 LeanTween.rotateZ(_logoImage.gameObject, 45, 0.5f).setEasePunch().setDelay(1.3f + 0.5f + 0.1f).setOnComplete(StartFade);
             else
                 LeanTween.rotateZ(_logoImage.gameObject, 45, 0.5f).setEasePunch().setDelay(1.3f + 0.5f + 0.1f);
             LeanTween.scale(_logoImage.gameObject, Vector3.zero, .4f).setEaseInBack().setDelay(1.3f + 0.6f + 0.5f + 0.3f);
+        }
+
+        private void LogoSound()
+        {
+            AudioManager.PlaySound(_logoSound);
         }
 
         private void StartFade()
