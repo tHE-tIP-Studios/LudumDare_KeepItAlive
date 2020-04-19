@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Talkie
 {
@@ -10,11 +11,14 @@ namespace Talkie
         private const float DISTANCE_BETWEEN = 935.0f;
         [SerializeField] private GameObject _profilePrefab = null;
         [SerializeField] private CharacterProfile[] _profiles;
+        [Space]
+        [SerializeField] private Button _moveNextButton = null;
+        [SerializeField] private Button _movePreviousButton = null;
         private List<TalkieSelectionProfile> _activeProfiles;
 
         private int _index;
         private float _timeOfLastMove;
-        
+
         private bool CooldownOver => Time.time - _timeOfLastMove > MOVE_COOLDOWN;
 
         public bool CanMoveNext => _index + 1 < _profiles.Length && CooldownOver;
@@ -24,14 +28,16 @@ namespace Talkie
         {
             _activeProfiles = new List<TalkieSelectionProfile>(_profiles.Length);
             CreateObjects();
+            _moveNextButton.onClick.AddListener(ButtonMoveNext);
+            _movePreviousButton.onClick.AddListener(ButtonMovePrevious);
         }
 
         private void CreateObjects()
         {
             float currentX = 0;
-            foreach(CharacterProfile p in _profiles)
+            foreach (CharacterProfile p in _profiles)
             {
-                TalkieSelectionProfile newProfile = 
+                TalkieSelectionProfile newProfile =
                     Instantiate(_profilePrefab).GetComponent<TalkieSelectionProfile>();
                 newProfile.transform.SetParent(transform);
                 _activeProfiles.Add(newProfile);
@@ -41,6 +47,9 @@ namespace Talkie
             }
             _timeOfLastMove = Time.time;
         }
+
+        private void ButtonMoveNext() => MoveNext();
+        private void ButtonMovePrevious() => MovePrevious();
 
         public bool MoveNext()
         {
@@ -62,7 +71,6 @@ namespace Talkie
 
         private void MoveAll(float xValue)
         {
-            TalkieArea.ActiveProfile = _activeProfiles[_index].Profile;
             foreach (TalkieSelectionProfile p in _activeProfiles)
                 p.MoveSideways(xValue);
         }
