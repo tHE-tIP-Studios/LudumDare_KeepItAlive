@@ -46,8 +46,8 @@ namespace Talkie
         {
             if (!CanMoveNext) return false;
             _timeOfLastMove = Time.time;
-            MoveAll(-DISTANCE_BETWEEN);
             _index++;
+            MoveAll(-DISTANCE_BETWEEN);
             return true;
         }
 
@@ -55,13 +55,14 @@ namespace Talkie
         {
             if (!CanMovePrevious) return false;
             _timeOfLastMove = Time.time;
-            MoveAll(DISTANCE_BETWEEN);
             _index--;
+            MoveAll(DISTANCE_BETWEEN);
             return true;
         }
 
         private void MoveAll(float xValue)
         {
+            TalkieArea.ActiveProfile = _activeProfiles[_index].Profile;
             foreach (TalkieSelectionProfile p in _activeProfiles)
                 p.MoveSideways(xValue);
         }

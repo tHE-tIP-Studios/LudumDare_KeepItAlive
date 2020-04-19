@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Scripts;
 using Talkie;
 using UnityEngine;
-using Scripts;
 
 namespace WALTApp
 {
@@ -21,10 +21,7 @@ namespace WALTApp
 
         static MessageSender()
         {
-            _sentMessages = new List<MessageDisplay>(10);
             _msgDisplayPrefab = Resources.Load<GameObject>("Prefabs/Sent Text");
-            _mainCanvas = GameObject.Find("Canvas").transform;
-            _timeOfLastMessage = -9000;
         }
 
         // For talkies
@@ -53,7 +50,7 @@ namespace WALTApp
 
             // Initialize Message
             newMsg.transform.SetParent(_mainCanvas.GetChild(1));
-            newMsg.transform.localScale = new Vector3(1,1,1);
+            newMsg.transform.localScale = new Vector3(1, 1, 1);
             newMsg.SetText(text);
             newMsg.SetColor(bgColor);
             if (isPlayer) newMsg.SetPositionOnRight();
@@ -68,6 +65,18 @@ namespace WALTApp
         public static void MessageIsGone(MessageDisplay whoGone)
         {
             _sentMessages.Remove(whoGone);
+        }
+
+        public static void NewTalk()
+        {
+            _sentMessages = new List<MessageDisplay>(20);
+            _mainCanvas = GameObject.Find("Canvas").transform;
+            _timeOfLastMessage = -9000;
+        }
+
+        public static void OnTalkOver()
+        {
+            _sentMessages.Clear();
         }
 
         private static void MoveAllUp()

@@ -19,6 +19,7 @@ namespace Talkie
 
         private void Awake()
         {
+            WALTApp.MessageSender.NewTalk();
             if (ActiveProfile == null)
                 ActiveProfile = _debugProfile;
             _talkieImg.sprite = ActiveProfile.CharacterImage;
