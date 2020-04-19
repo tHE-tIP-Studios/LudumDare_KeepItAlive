@@ -392,6 +392,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8933734908112916260, guid: 6ebccd37664a17d419583bf2cc9f742f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933734908112916260, guid: 6ebccd37664a17d419583bf2cc9f742f,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.078431375
+      objectReference: {fileID: 0}
     - target: {fileID: 8933734908112916262, guid: 6ebccd37664a17d419583bf2cc9f742f,
         type: 3}
       propertyPath: m_Name
