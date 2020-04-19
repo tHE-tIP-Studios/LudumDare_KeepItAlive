@@ -4,7 +4,7 @@ namespace Scripts.Conversation
 {
     public class RottenConversation
     {
-        private const int MAX_EVALUATION = 100;
+        private const int MAX_EVALUATION = 10;
         private int _ratingAC;
         private int _finalRating;
         private int _lastRating;

@@ -24,16 +24,33 @@ namespace Scripts.Conversation
         private Dictionary<int, List<Phrase>> _dialogueNodes = default;
         private List<Phrase> _availablePhrases;
         private RottenConversation _evaluator;
+        private int _activeChoices;
 
         public Phrase LastChoice {get; set;}
         public Phrase LastAnswer {get; set;}
         public bool IsAITyping {get; private set;}
+        public int ActiveChoices 
+        {
+            get => _activeChoices;
+            set
+            {
+                _activeChoices = value;
+                if (_activeChoices <= 0)
+                {
+                    outOfPhrases?.Invoke();
+                    Debug.Log("You lost by Active Phrases");
+                }
+            }
+        }
         
         public event Action outOfPhrases;
+        public event Action gameOver;
         
         private void Awake()
         {
+            ActiveChoices = 4;
             _evaluator = new RottenConversation();
+            _evaluator.DebugValues();
             _availablePhrases = new List<Phrase>();
             // Initialize dictionary with ids
             _dialogueNodes = new Dictionary<int, List<Phrase>>(_playersAnswers.Entries);
@@ -64,9 +81,13 @@ namespace Scripts.Conversation
             // Declare a gameOver if this is a thing
             if (_availablePhrases.Count <= 0)
             {
+                
                 // Declare a loss, you couldnt keep it lively enough could you?
                 if (_evaluator.CurrentRating <= 0)
-                    outOfPhrases?.Invoke();
+                {
+                    Debug.Log("You lost by Conversation Rating");
+                    gameOver?.Invoke();
+                }
 
                 return new Phrase();
             }
@@ -118,8 +139,8 @@ namespace Scripts.Conversation
                 Range(MessageSender.MESSAGE_DELAY, MessageSender.MESSAGE_DELAY * 4); 
             Phrase ai = GetAnswerForCurrent();
             Debug.Log(ai.Answer);
-            Debug.Log(TalkieArea.ActiveProfile);
-            
+            Debug.Log(_evaluator.CurrentRating);            
+
             StartCoroutine(AnswerAfterTime(time, ai.Answer));
         }
 
@@ -127,6 +148,8 @@ namespace Scripts.Conversation
         {
             float current = 0;
             float stopTypingTimer = 0;
+
+            yield return new WaitForSeconds(0.5f);
             IsAITyping = true;
 
             while(current < time)

@@ -65,6 +65,16 @@ namespace Scripts.UI
                 // Call for the ai to answer
                 _master.Answer();
             }
+
+            int active = 0;
+            foreach(AnswerButton b in _buttons)
+            {
+                if (b.gameObject.activeInHierarchy)
+                {
+                    active += 1;
+                }
+            }
+            _master.ActiveChoices = active;
         }
     }
 }
