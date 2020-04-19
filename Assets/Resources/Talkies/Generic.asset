@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 2130535880278150251, guid: b8d1643ee38056d4e83c5e7382e4d218,
     type: 3}
-  _imageBgColor: {r: 0, g: 0, b: 0, a: 1}
+  _background: {fileID: 21300000, guid: f4ab9da3449a5da40908f5883056cedc, type: 3}
   _name: Generic Name
+  _iconicColor: {r: 0.99389565, g: 1, b: 0.9481132, a: 1}
   _iconicWord: hoi
   _mostUsedType: 3
   _description: Your generic friend.
-  _gameOverText: I'm feeling tired, i might fall asleed on the keyboarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+  _gameOverText: I'm feeling tired, i might fall asleed on the keyboarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr

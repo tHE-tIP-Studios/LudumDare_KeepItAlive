@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 7374845061861626600, guid: b8d1643ee38056d4e83c5e7382e4d218,
     type: 3}
-  _imageBgColor: {r: 0, g: 0, b: 0, a: 1}
+  _background: {fileID: 21300000, guid: 3149fd4dc4e78cb48bbadf1765139272, type: 3}
   _name: Donsie Wupi
+  _iconicColor: {r: 0.9877733, g: 0.8627451, b: 0.99607843, a: 1}
   _iconicWord: hm
   _mostUsedType: 1
   _description: 'I came fwom a faw-away town in seek of nyew fwiends UwU

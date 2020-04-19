@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 184950751378207249, guid: b8d1643ee38056d4e83c5e7382e4d218,
     type: 3}
-  _imageBgColor: {r: 0, g: 0, b: 0, a: 1}
+  _background: {fileID: 21300000, guid: c77ced1018c5ffd42869a47523a5ad94, type: 3}
   _name: Larry Mappinson
+  _iconicColor: {r: 0.99607843, g: 0.9083505, b: 0.8627451, a: 1}
   _iconicWord: fret
   _mostUsedType: 0
   _description: "Hi. My name is Larry Cap'Sulli Mappinson. I work for Nano-Tech in

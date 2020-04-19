@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 7576617242518483205, guid: b8d1643ee38056d4e83c5e7382e4d218,
     type: 3}
-  _imageBgColor: {r: 0, g: 0, b: 0, a: 1}
+  _background: {fileID: 21300000, guid: e3fe7c3b6348c2e44b3372fe0f30427f, type: 3}
   _name: Foot the Feet
+  _iconicColor: {r: 0.8867924, g: 0.8249318, b: 0.7654859, a: 1}
   _iconicWord: trip
   _mostUsedType: 2
   _description: My favorite past time is stomping and sliding in your DMs.

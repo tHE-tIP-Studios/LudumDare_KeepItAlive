@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4cb8e4edb5541b4699a45bf61364cba, type: 3}
-  m_Name: Talkie Profile
+  m_Name: Nicomi
   m_EditorClassIdentifier: 
   _characterImage: {fileID: 1202984965197363600, guid: b8d1643ee38056d4e83c5e7382e4d218,
     type: 3}
-  _imageBgColor: {r: 0, g: 0, b: 0, a: 1}
+  _background: {fileID: 21300000, guid: c28db6d51e27a5f478c3c9b07b033c61, type: 3}
   _name: Nicomi Lantes
+  _iconicColor: {r: 0.8627451, g: 0.99607843, b: 0.8754976, a: 1}
   _iconicWord: bru
   _mostUsedType: 2
   _description: "uo\u0183\u0250\u0287u\u01DDd p\u01DD\u0279 p\u0279\u1D09\u01DD\u028D

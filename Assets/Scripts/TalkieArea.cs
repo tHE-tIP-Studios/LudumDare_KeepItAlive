@@ -11,11 +11,13 @@ namespace Talkie
         [SerializeField] private Image _talkieImg = null;
         [SerializeField] private Image _backgroundImage = null;
         [SerializeField] private TextMeshProUGUI _namePro = null;
+        [SerializeField] private Image _wallpaper = null;
 
         private void Awake()
         {
             _talkieImg.sprite = _profile.CharacterImage;    
-            _backgroundImage.color = _profile.ImageBgColor;
+            _wallpaper.sprite = _profile.Background;
+            _backgroundImage.color = _profile.IconicColor;
             _namePro.SetText(_profile.Name);
         }
     }

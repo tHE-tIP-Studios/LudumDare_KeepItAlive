@@ -9,8 +9,9 @@ namespace Talkie
     public class CharacterProfile : ScriptableObject
     {
         [SerializeField] private Sprite _characterImage = null;
-        [SerializeField] private Color _imageBgColor = Color.black;
+        [SerializeField] private Sprite _background = null;
         [SerializeField] private string _name = null;
+        [SerializeField] private Color _iconicColor = Color.black;
         [SerializeField] private string _iconicWord = null;
         [SerializeField] private Scripts.PhraseType _mostUsedType = Scripts.PhraseType.DEFAULTSTATE;
         [TextArea]
@@ -22,9 +23,11 @@ namespace Talkie
         public string Name => _name;
         public string IconicWord => _iconicWord;
         public string Description => _description;
-        public Color ImageBgColor => _imageBgColor;
+        public Color IconicColor => _iconicColor;
         public PhraseType MostUsedType => _mostUsedType;
         public string GameOverText => _gameOverText;
+
+        public Sprite Background => _background;
     }
 
 }
