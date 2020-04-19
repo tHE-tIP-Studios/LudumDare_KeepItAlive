@@ -148,27 +148,21 @@ namespace Scripts.Conversation
 
         private IEnumerator AnswerAfterTime(float time, string text)
         {
-            float finalTime = time;
             float current = 0;
-            float stopTypingTimer = 0;
-
             yield return _secondsToWait;
             IsAITyping = true;
 
-            while(current < finalTime)
+            while(current < time)
             {
-                if (!IsAITyping && stopTypingTimer >= MAX_STOP_TYPING_TIME)
-                    IsAITyping = true;
-                else if (.2f > UnityEngine.Random.Range(0f, 1f) && IsAITyping)
+                if (.005f > UnityEngine.Random.Range(0f, 1f) && IsAITyping)
                 {
                     IsAITyping = false;
-                    finalTime += 0.5f;
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1f));
+                    IsAITyping = true;
                 }
 
                 // Update clocks
                 current += Time.deltaTime;
-                if (!IsAITyping)
-                    stopTypingTimer += Time.deltaTime;
                 yield return null;
             }
 
