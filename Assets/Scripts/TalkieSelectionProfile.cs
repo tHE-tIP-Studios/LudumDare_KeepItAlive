@@ -18,12 +18,17 @@ namespace Talkie
 
         public void Init(CharacterProfile profile)
         {
-
+            transform.localPosition = Vector3.zero;
+            _characterImg.sprite = profile.CharacterImage;
+            _background.color = profile.IconicColor;
+            _descriptionPro.SetText(profile.Description);
+            _namePro.SetText(profile.Name);
         }
 
         public void MoveSideways(float xValue)
         {
-            LeanTween.moveLocalX(gameObject, transform.position.x + xValue, TalkieSelection.MOVE_COOLDOWN - 0.1f);
+            LeanTween.moveLocalX(gameObject, transform.localPosition.x + xValue, TalkieSelection.MOVE_COOLDOWN - 0.1f)
+            .setEaseOutCirc();
         }
     }
 }

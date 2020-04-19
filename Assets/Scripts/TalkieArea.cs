@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace Talkie
 {
     public class TalkieArea : MonoBehaviour
     {
-        [SerializeField] private CharacterProfile _profile = null;
+        private static CharacterProfile _activeProfile;
+        public static CharacterProfile ActiveProfile { get => _activeProfile; set { _activeProfile = value; } }
+
+        // This is for debug only
+        [SerializeField] private CharacterProfile _debugProfile = null;
 
         [SerializeField] private Image _talkieImg = null;
         [SerializeField] private Image _backgroundImage = null;
@@ -15,10 +19,12 @@ namespace Talkie
 
         private void Awake()
         {
-            _talkieImg.sprite = _profile.CharacterImage;    
-            _wallpaper.sprite = _profile.Background;
-            _backgroundImage.color = _profile.IconicColor;
-            _namePro.SetText(_profile.Name);
+            if (ActiveProfile == null)
+                ActiveProfile = _debugProfile;
+            _talkieImg.sprite = ActiveProfile.CharacterImage;
+            _wallpaper.sprite = ActiveProfile.Background;
+            _backgroundImage.color = ActiveProfile.IconicColor;
+            _namePro.SetText(ActiveProfile.Name);
         }
     }
 }
