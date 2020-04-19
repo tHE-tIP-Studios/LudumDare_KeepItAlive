@@ -13,6 +13,8 @@ namespace Talkie
         [SerializeField] private TextMeshProUGUI _namePro = null;
         [SerializeField] private Image _wallpaper = null;
 
+        public CharacterProfile Profile => _profile;
+
         private void Awake()
         {
             _talkieImg.sprite = _profile.CharacterImage;    

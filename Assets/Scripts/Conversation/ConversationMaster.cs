@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using WALTApp;
 
 namespace Scripts.Conversation
 {
@@ -20,9 +21,11 @@ namespace Scripts.Conversation
         private Dictionary<int, List<Phrase>> _dialogueNodes = default;
         private List<Phrase> _availablePhrases;
         private RottenConversation _evaluator;
-        
+        private CharacterProfile _aiProfile;
+
         public Phrase LastChoice {get; set;}
         public Phrase LastAnswer {get; set;}
+        
         public event Action outOfPhrases;
         
         private void Awake()
@@ -82,20 +85,6 @@ namespace Scripts.Conversation
             return newPhrases;
         }
 
-        public Phrase GetAnswerFor(Phrase playerPhrase)
-        {
-            if (!_dialogueNodes.ContainsKey(playerPhrase.IDs[0])) Debug.LogError("Yo, you forgot to put this ID in");
-            Phrase aiPhrase;
-            aiPhrase = _dialogueNodes[playerPhrase.IDs[0]][UnityEngine.Random.Range(0, _dialogueNodes[playerPhrase.IDs[0]].Count)];
-
-            // Update the AI answer
-            LastAnswer = aiPhrase;
-
-            // Update Score as we now have the answer from the player and the ai
-            UpdateScore();
-            return aiPhrase;
-        }
-
         public Phrase GetAnswerForCurrent()
         {
             if (!_dialogueNodes.ContainsKey(LastChoice.IDs[0])) Debug.LogError("Yo, you forgot to put this ID in");
@@ -113,6 +102,12 @@ namespace Scripts.Conversation
         private void UpdateScore()
         {
             _evaluator.Evaluate(LastChoice.PhraseType, LastAnswer.PhraseType);
+        }
+
+        public void Answer()
+        {
+            Phrase ai = GetAnswerForCurrent();
+            MessageSender.SendMessage(TalkieArea.ActiveProfile, ai.Answer);
         }
     }
 }

@@ -808,11 +808,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8933734906730756059, guid: 6ebccd37664a17d419583bf2cc9f742f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8933734907010979087, guid: 6ebccd37664a17d419583bf2cc9f742f,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -947,11 +942,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933734907656063796, guid: 6ebccd37664a17d419583bf2cc9f742f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933734908112916262, guid: 6ebccd37664a17d419583bf2cc9f742f,
         type: 3}

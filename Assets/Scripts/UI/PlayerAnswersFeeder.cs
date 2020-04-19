@@ -45,20 +45,25 @@ namespace Scripts.UI
             }
         }
 
-        public void ReplaceUsed()
+        private void ReplaceUsed()
         {
-            _master.LastChoice = _lastUsed.CurrentPhrase;
             _lastUsed.AssignNewText(_master.NewPhrase());
         }
 
         private void OnChoicePick(AnswerButton buttonPressed)
         {
             _lastUsed = buttonPressed;
+            _master.LastChoice = _lastUsed.CurrentPhrase;
 
             // Play a funny bloop sound
             AudioManager.PlaySound(_buttonPressSound, 1, Random.Range(0.9f, 1f));
             MessageSender.SendMessage(_lastUsed.CurrentPhrase.Answer);
-            Debug.Log(buttonPressed.name);
+
+            // Call for the ai to answer
+            _master.Answer();
+            
+            // Replaces the used button
+            ReplaceUsed();
         }
     }
 }
