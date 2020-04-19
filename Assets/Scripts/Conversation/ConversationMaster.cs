@@ -9,6 +9,7 @@ namespace Scripts.Conversation
 {
     public class ConversationMaster : MonoBehaviour
     {
+        private const float MAX_STOP_TYPING_TIME = 1f;
         /// <summary>
         /// What the player can say
         /// </summary>
@@ -125,11 +126,20 @@ namespace Scripts.Conversation
         private IEnumerator AnswerAfterTime(float time, string text)
         {
             float current = 0;
+            float stopTypingTimer = 0;
             IsAITyping = true;
 
             while(current < time)
             {
+                if (!IsAITyping && stopTypingTimer >= MAX_STOP_TYPING_TIME)
+                    IsAITyping = true;
+                else if (.2f > UnityEngine.Random.Range(0f, 1f))
+                    IsAITyping = false;
+
+                // Update clocks
                 current += Time.deltaTime;
+                if (!IsAITyping)
+                    stopTypingTimer += Time.deltaTime;
                 yield return null;
             }
 
